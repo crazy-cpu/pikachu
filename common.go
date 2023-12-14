@@ -5,7 +5,6 @@ import (
 	"github.com/google/uuid"
 	"github.com/tidwall/gjson"
 	"math/rand"
-	"pikachu/mqtt"
 	"sync"
 	"time"
 )
@@ -24,7 +23,7 @@ func subscribersAll() {
 	}
 
 	for _, topic := range subscribers {
-		mqtt.Conn.Subscribe(topic, 0, func(client paho.Client, message paho.Message) {
+		Conn.Subscribe(topic, 0, func(client paho.Client, message paho.Message) {
 			token := gjson.GetBytes(message.Payload(), "token").String()
 			matchMsg(token, message.Payload())
 		})
@@ -33,7 +32,7 @@ func subscribersAll() {
 
 func InitSync(broker string, appName string) {
 	App = appName
-	mqtt.Init(broker)
+	initMqtt(broker)
 	subscribersAll()
 
 }

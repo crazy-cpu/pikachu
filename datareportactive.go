@@ -2,7 +2,6 @@ package pikachu
 
 import (
 	"encoding/json"
-	"pikachu/mqtt"
 	"time"
 )
 
@@ -36,5 +35,5 @@ func DataChangedReport(deviceType string, deviceIdent string, dataType int, body
 		return err
 	}
 
-	return mqtt.Publish(App+"/notify/spont/*/"+deviceType+"/"+deviceIdent, b)
+	return Publish(App+"/notify/spont/*/"+deviceType+"/"+deviceIdent, b)
 }

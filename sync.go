@@ -2,7 +2,6 @@ package pikachu
 
 import (
 	"fmt"
-	"pikachu/mqtt"
 	"time"
 )
 
@@ -33,7 +32,7 @@ func newSyncAndWaiting(token string) ([]byte, error) {
 }
 
 func SendAndWaiting(topic string, token string, payload any) ([]byte, error) {
-	err := mqtt.Publish(topic, payload)
+	err := Publish(topic, payload)
 	if err != nil {
 		return nil, err
 	}

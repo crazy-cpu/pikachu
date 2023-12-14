@@ -1,4 +1,4 @@
-package mqtt
+package pikachu
 
 import (
 	mqtt "github.com/eclipse/paho.mqtt.golang"
@@ -15,7 +15,7 @@ type (
 	Handler mqtt.MessageHandler
 )
 
-func Init(broker string) {
+func initMqtt(broker string) {
 	ops := mqtt.NewClientOptions()
 	ops.AutoReconnect = true
 	ops.ConnectTimeout = 5 * time.Second
