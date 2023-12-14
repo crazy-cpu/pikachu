@@ -1,4 +1,4 @@
-module pikachu
+module github.com/crazy-cpu/pikachu
 
 go 1.21.2
 
